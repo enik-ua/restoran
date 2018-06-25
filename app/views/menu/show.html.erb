@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @menu.name %>
+</p>
+<p>
+  <strong>Section:</strong>
+  <%= @menu.section %>
+</p>
+
+
+<%= link_to 'Edit', controller: "menu", action: "edit", id: @menu  %> |
+<%= link_to 'Back', controller: "menu", action: "index" %>

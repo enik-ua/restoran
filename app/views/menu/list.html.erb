@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Menu</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Section</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menu.each do |menu| %>
+      <tr>
+        <td><%= menu.name %></td>
+        <td><%= menu.section %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
