@@ -24,6 +24,8 @@ class MenuController < ApplicationController
 
   # GET /menus/1/edit
   def edit
+    @menu = Menu.find(params[:id])
+    #render plain:@menu.column_for_attribute
   end
 
   # POST /menus
@@ -45,6 +47,7 @@ class MenuController < ApplicationController
   # PATCH/PUT /menus/1
   # PATCH/PUT /menus/1.json
   def update
+    #render plain:menu_params
     respond_to do |format|
       if @menu.update(menu_params)
         format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }

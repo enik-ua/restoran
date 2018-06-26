@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @order.number %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @order.user %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @order.comment %>
+</p>
+
+
+<h2>Content</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Dish:</th>
+      <th>Number:</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order.order_contents.each do |content| %>
+      <tr>
+        <td><%= content.menu.name %></td>
+        <td><%= content.count %></td>
+        <td><%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h2>Add a content:</h2>
+<%= form_with(model: [ @order, @order.order_contents.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :menu %>
+    <%= form.text_field :menu, list:"menulist" %>
+  </p>
+  <p>
+    <%= form.label :count %>
+    <%= form.text_field :count %>
+  </p>
+  <datalist id = "menulist">
+    <% @menu.each do |menu| %>
+      <option><%= menu.name %></option>
+    <% end %>
+  </datalist>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
+

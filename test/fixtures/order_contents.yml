@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  count: 9.99
+  order: one
+  menu: one
+
+two:
+  count: 9.99
+  order: two
+  menu: two

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :order_contents
+  resources :orders
+  resources :orders do resources :order_contents end
+
   get    '/menu',         to: 'menu#index'
   get    '/menu/new',     to: 'menu#new'
   post   '/menu',         to: 'menu#create'
