@@ -7,13 +7,25 @@ Things you may want to cover:
 
 * Ruby version
 
+  Ruby 2.4
+
 * System dependencies
+
+  Rails 5.2
+  Postgres
 
 * Configuration
 
+  sudo docker-compose build
+  sudo docker-compose up
+
 * Database creation
 
+  sudo docker-compose run web rails db:create
+
 * Database initialization
+
+  sudo docker-compose run web rails db:migrate
 
 * How to run the test suite
 
@@ -22,9 +34,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-
-
-sudo docker build . -t my-app
-
-sudo docker run --rm -it -v ${PWD}:/apphost -w /apphost --publish 3000:3000 my-app rails server

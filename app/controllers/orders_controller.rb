@@ -16,8 +16,12 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @lastorder = Order.last.number+1
     @user = current_user.email
+    if Order.last.nil?
+      @lastorder = 1
+    else
+      @lastorder = Order.last.number+1
+    end
   end
 
   # GET /orders/1/edit
@@ -27,8 +31,14 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    if Order.last().nil?
+      @lastorder = 1
+    else
+      @lastorder = Order.last().number+1
+    end
 
-    @order = Order.new(comment: order_params[:comment],number: Order.last().number+1,user: current_user.email)
+
+    @order = Order.new(comment: order_params[:comment],number: @lastorder,user: current_user.email)
     #render plain: order_params
 
     respond_to do |format|

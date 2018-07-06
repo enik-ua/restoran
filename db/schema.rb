@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_06_25_175517) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "menus", force: :cascade do |t|
     t.string "name"
     t.string "section"
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 2018_06_25_175517) do
 
   create_table "order_contents", force: :cascade do |t|
     t.decimal "count", precision: 10, scale: 2
-    t.integer "order_id"
-    t.integer "menu_id"
+    t.bigint "order_id"
+    t.bigint "menu_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["menu_id"], name: "index_order_contents_on_menu_id"
@@ -49,4 +52,6 @@ ActiveRecord::Schema.define(version: 2018_06_25_175517) do
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
+  add_foreign_key "order_contents", "menus"
+  add_foreign_key "order_contents", "orders"
 end

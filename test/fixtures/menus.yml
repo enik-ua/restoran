@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  section: MyString
+  name: Жаркое
+  section: Гарнир
   price: 9.99
 
 two:
-  name: MyString
-  section: MyString
+  name: Устрицы
+  section: Морепродукты
   price: 9.99
