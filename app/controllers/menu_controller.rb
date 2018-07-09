@@ -25,12 +25,13 @@ class MenuController < ApplicationController
   # GET /menus/1/edit
   def edit
     @menu = Menu.find(params[:id])
-    #render plain:@menu.column_for_attribute
+    #render plain:@menu.inspect()
   end
 
   # POST /menus
   # POST /menus.json
   def create
+    #render plain:menu_params
     @menu = Menu.new(menu_params)
 
     respond_to do |format|
@@ -48,6 +49,7 @@ class MenuController < ApplicationController
   # PATCH/PUT /menus/1.json
   def update
     #render plain:menu_params
+    #render menu_params
     respond_to do |format|
       if @menu.update(menu_params)
         format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }
@@ -77,6 +79,6 @@ class MenuController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params.require(:menu).permit(:name, :type)
+      params.require(:menu).permit(:name, :section, :price)
     end
 end
