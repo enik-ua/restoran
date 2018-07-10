@@ -16,8 +16,18 @@ Things you may want to cover:
 
 * Configuration
 
+  sudo git clone https://github.com/enik-ua/restoran.git
+
+  cd restoran
+
   sudo docker-compose build
+
+  sudo docker-compose run web rails db:setup
+
+  sudo docker-compose run web rails db:fixtures:load
+
   sudo docker-compose up
+
 
 * Database creation
 
