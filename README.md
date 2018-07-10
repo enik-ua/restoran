@@ -20,7 +20,7 @@ Things you may want to cover:
 
   cd restoran
 
-  sudo docker-compose build
+  sudo docker-compose build --no-cache
 
   sudo docker-compose run web rails db:setup
 
