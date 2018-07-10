@@ -9,3 +9,18 @@ two:
   name: Устрицы
   section: Морепродукты
   price: 9.99
+
+three:
+  name: Суп харчо
+  section: Первое блюдо
+  price: 9.99
+
+four:
+  name: Окрошка
+  section: Первое блюдо
+  price: 9.99
+
+five:
+  name: Борщ
+  section: Первое блюдо
+  price: 9.99
