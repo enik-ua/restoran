@@ -9,8 +9,12 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to '/orders'
     else
-      flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
-      render 'new'
+      respond_to do |format|
+        format.html { render :new }
+        format.json { render json: 'Invalid email/password combination', status: :unprocessable_entity }
+      end
+      #flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
+      #render 'new'
     end
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_175517) do
+ActiveRecord::Schema.define(version: 2018_07_17_073407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2018_06_25_175517) do
     t.decimal "price", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "section_id"
+    t.index ["section_id"], name: "index_menus_on_section_id"
   end
 
   create_table "order_contents", force: :cascade do |t|
@@ -39,6 +41,13 @@ ActiveRecord::Schema.define(version: 2018_06_25_175517) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "sent"
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_175517) do
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
+  add_foreign_key "menus", "sections"
   add_foreign_key "order_contents", "menus"
   add_foreign_key "order_contents", "orders"
 end

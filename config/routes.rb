@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :order_contents
   resources :orders
+  patch  '/orders/:id/sent',     to: 'orders#sent'
   resources :orders do resources :order_contents end
 
   get    '/menu',         to: 'menu#index'

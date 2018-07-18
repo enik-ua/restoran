@@ -1,0 +1,19 @@
+        Orders
+
+<%= @order.number %>
+<%= @order.user %>
+
+<%= @order.comment %>
+
+<% if @order.sent == true %>
+Sent: yes
+<% else %>
+Sent: no
+<% end %>
+
+Content
+
+Dish;         Number
+<% @order.order_contents.each do |content| %>
+<%= content.menu.name %>    <%= content.count %>
+<% end %>

@@ -61,5 +61,6 @@
 <% end %>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back', orders_path %> |
+<%= link_to 'Send', '/orders/' + @order.id.to_s + '/sent',:method => "patch", data: { confirm: 'Are you sure?' }  %>
 

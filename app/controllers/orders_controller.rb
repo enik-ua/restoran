@@ -5,11 +5,13 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    #@orders = Order.order("number DESC")
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    #Use for choise menu
     @menu  = Menu.all
   end
 
@@ -17,10 +19,11 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @user = current_user.email
-    if Order.last.nil?
-      @lastorder = 1
+    @lastorder = Order.order("number DESC").first
+    if @lastorder.nil?
+      @lastnumber = 1
     else
-      @lastorder = Order.last.number+1
+      @lastnumber = @lastorder.number+1
     end
   end
 
@@ -31,14 +34,15 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    if Order.last().nil?
-      @lastorder = 1
+    @lastorder = Order.order("number DESC").first
+    if @lastorder.nil?
+      @lastnumber = 1
     else
-      @lastorder = Order.last().number+1
+      @lastnumber = @lastorder.number+1
     end
 
 
-    @order = Order.new(comment: order_params[:comment],number: @lastorder,user: current_user.email)
+    @order = Order.new(comment: order_params[:comment],number: @lastnumber,user: current_user.email)
     #render plain: order_params
 
     respond_to do |format|
@@ -76,6 +80,19 @@ class OrdersController < ApplicationController
     end
   end
 
+  def sent
+    @order = Order.find(params[:id])
+    @order.sent = true
+    respond_to do |format|
+      if @order.save
+        OrderMailer.order_sending(@order).deliver_now
+        format.html { redirect_to @order, notice: 'Order was successfully sent.' }
+        format.json { render :show, status: :ok, location: @order }
+      else
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
