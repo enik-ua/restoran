@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2018_07_17_073407) do
 
   create_table "menus", force: :cascade do |t|
     t.string "name"
-    t.string "section"
     t.decimal "price", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

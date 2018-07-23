@@ -15,7 +15,7 @@
     <% @menu.each do |menu| %>
       <tr>
         <td><%= menu.name %></td>
-        <td><%= menu.section %></td>
+        <td><%= menu.section.name %></td>
         <td><%= link_to 'Show', controller: "menu", action: "show", id: menu %></td>
         <td><%= link_to 'Edit', controller: "menu", action: "edit", id: menu %></td>
         <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -7,7 +7,12 @@
 
   <div class="field">
     <%= form.label :section %>
-    <%= form.text_field :section %>
+    <%= form.text_field :section, list:"sectionlist", value: section %>
+    <datalist id = "sectionlist">
+      <% sections.each do |sect| %>
+        <option><%= sect.name %></option>
+      <% end %>
+    </datalist>
   </div>
 
   <div class="actions">

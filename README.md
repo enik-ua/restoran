@@ -24,6 +24,8 @@ Things you may want to cover:
 
   sudo docker-compose run web rails db:setup
 
+  sudo docker-compose run web rails db:seed
+
   sudo docker-compose run web rails db:fixtures:load
 
   sudo docker-compose up

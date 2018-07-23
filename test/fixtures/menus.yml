@@ -2,25 +2,25 @@
 
 one:
   name: Жаркое
-  section: Гарнир
+  section: one
   price: 9.99
 
 two:
   name: Устрицы
-  section: Морепродукты
+  section: one
   price: 9.99
 
 three:
   name: Суп харчо
-  section: Первое блюдо
+  section: two
   price: 9.99
 
 four:
   name: Окрошка
-  section: Первое блюдо
+  section: two
   price: 9.99
 
 five:
   name: Борщ
-  section: Первое блюдо
+  section: two
   price: 9.99

@@ -19,20 +19,24 @@ class MenuController < ApplicationController
   # GET /menus/new
   def new
     @menu = Menu.new
-    #render plain: @menu.id
+    @sections = Section.all
+    @section = ""
   end
 
   # GET /menus/1/edit
   def edit
     @menu = Menu.find(params[:id])
-    #render plain:@menu.inspect()
+    @sections = Section.all
+    @section = @menu.section.name
   end
 
   # POST /menus
   # POST /menus.json
   def create
-    #render plain:menu_params
-    @menu = Menu.new(menu_params)
+
+    @section = Section.find_by(name: params[:menu][:section])
+    @menu = Menu.new(name: params[:menu][:name],section: @section)
+    @menu.save
 
     respond_to do |format|
       if @menu.save

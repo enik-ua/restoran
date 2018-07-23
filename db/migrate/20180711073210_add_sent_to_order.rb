@@ -1,5 +1,5 @@
 class AddSentToOrder < ActiveRecord::Migration[5.2]
   def change
-#    add_column :orders, :sent, :boolean
+    add_column :orders, :sent, :boolean
   end
 end
